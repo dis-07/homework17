@@ -6,7 +6,7 @@ const ul = document.getElementById('list');
 const errorMessage = document.querySelector('.error-message');
 
 
-function addContent (){
+function createTodo (){
     const li = document.createElement('li')
     li.className = 'todo-list';
     li.innerHTML = todoInput.value;
@@ -31,16 +31,13 @@ ul.addEventListener('click', (event) => {
 form.onsubmit = (event) => {
     event.preventDefault();
 
-    button.addEventListener('click', (event) => {
-        event.target = addContent();
-        document.todo.reset();
-    });
-
     if (todoInput.value.trim().length === 0) {
         todoInput.classList.add('error');
         errorMessage.innerHTML = 'Please, type text';
         return;
     }
+    createTodo();
+    document.todo.reset();
 }
 
 todoInput.oninput = () => {
